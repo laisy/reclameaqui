@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<h1><%=@usuario.login%></h1>
+<br/><br/>
+<p>
+  <strong> Login: </strong>
+  <%= @usuario.login %>
+</p>
+
+<p>
+  <strong> Email: </strong>
+  <%= @usuario.email %>
+</p>
+
+<p>
+  <strong> Senha: </strong>
+  <%= @usuario.senha %>
+</p>
+
+<%= link_to 'Editar', edit_usuario_path(@usuario), :class => "btn btn-dark" %>
+<br/><br/>
+<hr/>
+
+<h2>Reclamações de <%= @usuario.login %></h2>
+
+<div class="formulario-tabela">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th> Titulo </th>
+      <th> Texto </th>
+      <th> Cat problema </th>
+      <th> Nome empresa </th>
+      <th> Usuario </th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @usuario.reclamacaos.each do |reclamacao| %>
+      <tr>
+        <td><%= reclamacao.titulo %></td>
+        <td><%= reclamacao.texto %></td>
+        <td><%= reclamacao.cat_problema %></td>
+        <td><%= reclamacao.nome_empresa %></td>
+        <td><%= reclamacao.usuario.login %></td>
+        <td><%= link_to 'Ver', reclamacao, :id => "v-#{reclamacao.titulo}" %></td>
+        <td><%= link_to 'Editar', edit_reclamacao_path(reclamacao), :id => "e-#{reclamacao.titulo}" %></td>
+        <td><%= link_to 'Apagar', reclamacao, method: :delete, data: { confirm: 'Are you sure?' }, :id => "d-#{reclamacao.titulo}" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<div/>
+
+
+  <br>
+
+<%= link_to 'voltar', root_path, :class => "btn btn-dark" %>

@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+#principal{
+    width: 1220px;
+    margin: auto;
+    border-style: initial;
+}
+
+#header{
+    background-color: gray;
+    height: 250px;
+    border-style: double;
+}
+#titulo{
+    font-family: fantasy;
+    font-size: 70px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.reclame{
+    color: darkblue;
+    text-shadow: 2px 2px 2px black;
+}
+.aqui{
+    color: darkgreen;
+    text-shadow: 2px 2px 2px black;
+}
+.bt-consulta{
+    background-color: midnightblue;
+    color: white;
+    border-color: black;
+    border-style: double;
+    font-size: 20px;
+    margin-right: 600px;
+    float: left;
+}
+
+.bt-consulta:hover{
+    background-color: darkslateblue;
+    text-decoration: none;
+}
+#cadastro-login{
+    float: right;
+    margin-right: 10px;
+}
+.lc{
+    border-color: black;
+    border-style: double;
+    color: white;
+    margin-right: 10px;
+    background-color: midnightblue;
+    font-size: 20px;
+}
+.lc:hover{
+    background-color: darkslateblue;
+    text-decoration: none;
+}
+#footer{
+    border-style: double;
+    border-color: black;
+    background-color: gray;
+    height: 60px;
+}
+#message-footer{
+    color: white;
+    margin-left: 500px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+

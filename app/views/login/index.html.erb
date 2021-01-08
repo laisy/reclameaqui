@@ -1,0 +1,24 @@
+<% if @mensagens.length >= 1 %>
+  <% @mensagens.each do |mensagem| %>
+    <p class="erro"><%= mensagem %></p>
+  <% end %>
+<% end %>
+
+<h1>Login</h1><br/>
+<%= form_with scope: :login, url:login_index_path , local: true do  %>
+  <div class="form-group">
+    <%= label_tag 'Email' %>
+    <%= text_field_tag  :email, nil, placeholder: "Informe seu email.", :class => "busca-log", :id => "emaillogin" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'Senha' %>
+    <%= text_field_tag :senha, nil, type: "password", placeholder: "Informe sua senha.", :class => "busca-log", :id => "senhalogin" %>
+  </div>
+
+  <div class="actions" id="submit">
+    <%= submit_tag 'entrar' %>
+  </div>
+<% end %>
+<br/>
+<%= link_to 'voltar', root_path, :class => "btn btn-dark" %>

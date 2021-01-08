@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reclamação</h1><br/><br/>
+
+<p>
+  <strong> Titulo: </strong>
+  <%= @reclamacao.titulo %>
+</p>
+
+<p>
+  <strong> Texto: </strong>
+  <%= @reclamacao.texto %>
+</p>
+
+<p>
+  <strong> Categoria da reclamação: </strong>
+  <%= @reclamacao.cat_problema %>
+</p>
+
+<p>
+  <strong> Nome da empresa: </strong>
+  <%= @reclamacao.nome_empresa %>
+</p>
+
+<p>
+  <strong> Usuario: </strong>
+  <%= @reclamacao.usuario.login%>
+</p>
+<br/><br/>
+
+<%= link_to 'voltar', reclamacaos_path,:class => "btn btn-dark" %>

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h6><p>Faça o login para cadastrar uma reclamação! </p></h6>
+
+<h6><p> BUSQUE UMA RECLAMAÇÃO PELO TÍTULO </p>
+</p></h6>
+
+<%= form_tag(reclamacaos_path, :method =>:get) do %>
+  <%=text_field_tag('title', nil, :placeholder => "Titulo da Reclamação", :class => "busca-login") %>
+  <%= select_tag 'empresa', raw("<option>Empresa1</option><option>Empresa2</option><option>Empresa3</option>"),{include: true}  %>
+  <%= submit_tag "buscar" %>
+<% end %>
+<br/>
+
+<h2>Reclamações</h2>
+
+<div class="formulario-tabela">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th> Titulo </th>
+        <th> Texto </th>
+        <th> Categoria da reclamação </th>
+        <th> Nome da empresa </th>
+        <th> Usuario </th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reclamacaos.each do |reclamacao| %>
+        <tr>
+          <td><%= reclamacao.titulo %></td>
+          <td><%= reclamacao.texto %></td>
+          <td><%= reclamacao.cat_problema %></td>
+          <td><%= reclamacao.nome_empresa %></td>
+          <td><%= reclamacao.usuario.login %></td>
+          <td><%= link_to 'Show', reclamacao %></td>
+          <td><%= link_to 'Edit', edit_reclamacao_path(reclamacao) %></td>
+          <td><%= link_to 'Destroy', reclamacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div/>
+<br>
+<br/>

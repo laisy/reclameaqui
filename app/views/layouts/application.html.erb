@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id = "principal">
+      <header id="header">
+        <h2 id="titulo"><span class="reclame">RECLAME</span> <span class="aqui">AQUI!</span></h2><br/>
+
+        <div id="cadastro-login">
+          <% if Usuario.logado %>
+            <% @usuario = Usuario.get_usuario_logado %>
+
+            <%= link_to 'Nova reclamação', new_reclamacao_path, :class => "bt-consulta"  %>
+            <%= link_to "#{@usuario.login}", usuario_path(@usuario), :class => "lc", :id => "usuariologado"%>
+            <%= link_to 'logout', login_destroy_path, method: :delete, :class => "lc"  %>
+          <% end %>
+
+          <%= link_to " LOGIN " , login_index_path,:class => "lc" %> <br><br> <%= link_to " INSCREVER-SE ", new_usuario_path ,:class => "lc" %> <br/>
+        </div>
+
+      </header>
+      <br/>
+
+      <%= yield %>
+
+      <br/>
+    </div>
+  </body>
+</html>
