@@ -3650,3 +3650,436 @@ Processing by ReclamacaosController#index as HTML
 Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 2671)
 
 
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:36:09 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2118)
+Completed 200 OK in 61ms (Views: 39.6ms | ActiveRecord: 1.4ms | Allocations: 8656)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:36:27 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 111.1ms | Allocations: 5406)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 120.7ms | Allocations: 5807)
+Completed 200 OK in 149ms (Views: 123.0ms | ActiveRecord: 2.3ms | Allocations: 11240)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:36:41 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"omzEgVYaYz6mPaO5HBypaDlldjw0kHRBSAKz6SQbwZVKEmbO9toMQb8mPOcaK6k2lAtIhQ63XvVjfsCxySUSTw==", "usuario"=>{"login"=>"laisy@email.com", "email"=>"", "senha"=>""}, "commit"=>"salvar"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 6.0ms | Allocations: 1369)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1483)
+Completed 200 OK in 24ms (Views: 8.3ms | ActiveRecord: 0.6ms | Allocations: 7710)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:36:53 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"Ora1gNKu40qC4zHh4RvCdQMs4Q3ugg1vFKstsbtPOh7SyBfPcm6MNZv4rr/nLMIrrkLftNSlJ9s/117pVnHpxA==", "usuario"=>{"login"=>"laisy@email.com", "email"=>"laisy@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 5.6ms | Allocations: 964)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1076)
+Completed 200 OK in 63ms (Views: 8.9ms | ActiveRecord: 2.7ms | Allocations: 5999)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:37:09 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"jg1m/yaz+7PfuS7RhouHQoxXT+f2g6vYKJQUs7LjWmdmc8SwhnOUzMaisY+AvIccITlxXsykgWwD6GfrX92JvQ==", "usuario"=>{"login"=>"laisyferreira@email.com", "email"=>"laisyferreira@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisyferreira@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisyferreira@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 7.4ms | Allocations: 964)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1077)
+Completed 200 OK in 66ms (Views: 12.6ms | ActiveRecord: 2.6ms | Allocations: 6014)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:37:16 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (2.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 782)
+Completed 200 OK in 19ms (Views: 10.9ms | ActiveRecord: 2.5ms | Allocations: 1352)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:37:24 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 4.1ms | Allocations: 806)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 919)
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 1484)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:37:27 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 7.8ms | Allocations: 806)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 918)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 1482)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:37:43 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"+Kk23FF3zT0r5McGzHzn8eXd2aW1U6uVGJPjhd5E25MQ15ST8beiQjL/WFjKS+evSLPnHI90gSEz75DdM3oISQ==", "usuario"=>{"login"=>"laisyferreira@email.com", "email"=>"laisyferreira@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (30.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (78.1ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisyferreira@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisyferreira@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 632.2ms | Allocations: 964)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 633.7ms | Allocations: 1076)
+Completed 200 OK in 849ms (Views: 634.9ms | ActiveRecord: 108.5ms | Allocations: 5990)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:55:02 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/login" for 127.0.0.1 at 2021-03-12 10:55:04 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.9ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 57.6ms | Allocations: 1234)
+Completed 200 OK in 318ms (Views: 95.6ms | ActiveRecord: 0.9ms | Allocations: 4384)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 705)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 3075)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:55:07 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 10.3ms | Allocations: 873)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 11.7ms | Allocations: 988)
+Completed 200 OK in 103ms (Views: 18.8ms | ActiveRecord: 37.9ms | Allocations: 5999)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:55:24 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"jeDTNjLMj48Dx3uO2HzcLlL0KdRuME3bZLtfbYA/oKRlnnF5kgzg8Brc5NDeS9xw/5oXbVQXZ29Pxyw1bQFzfg==", "usuario"=>{"login"=>"laisyferreirs", "email"=>"laisy@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (19.6ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisyferreirs"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 11.7ms | Allocations: 966)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 14.2ms | Allocations: 1078)
+Completed 200 OK in 83ms (Views: 18.4ms | ActiveRecord: 21.0ms | Allocations: 6199)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:55:33 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"xK/IWSugrgzchX6rSS+KoakZ8QCNC+bTBhd5VT99i+ws0WoWi2DBc8We4fVPGIr/BHfPubcszGctawoN0kNYNg==", "usuario"=>{"login"=>"laisy", "email"=>"laisy@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisy"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 8.2ms | Allocations: 962)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1074)
+Completed 200 OK in 73ms (Views: 13.4ms | ActiveRecord: 5.9ms | Allocations: 6188)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:56:20 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"8fJcheaMwNj2Vd87uB+7zvw4Kzt+ZKETRIbvYq4y+TgZjP7KRkyvp+9OQGW+KLuQUVYVgkRDi6dv+pw6Qwwq4g==", "usuario"=>{"login"=>"laisy", "email"=>"laisy@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "laisy"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "laisy@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 14.5ms | Allocations: 978)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 14.9ms | Allocations: 1093)
+Completed 200 OK in 44ms (Views: 16.0ms | ActiveRecord: 2.5ms | Allocations: 12287)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-12 10:56:47 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 356)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 1059)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-12 10:56:53 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"G4kdPjxHU8Y7UfvL44MQsdW+tV1TE33JwG7ELlFWipKdOPCnCe4Apl+CcUhov3FYWsQVhncnw11adC482+nghA==", "email"=>"laisy@email.com", "senha"=>"12345678", "commit"=>"entrar"}
+  [1m[36mUsuario Load (0.8ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 344)
+Completed 200 OK in 15ms (Views: 5.9ms | ActiveRecord: 0.8ms | Allocations: 1569)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-12 10:57:02 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"fca9H3ngYYoWZoRz9dWDqDMxIRxu7pgquL2Lwod8zb77d1CGTEky6nK1DvB+6eJBvEuBx0raJr4ip2HQDcOnqA==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 344)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1522)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:57:08 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 9.5ms | Allocations: 806)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 10.8ms | Allocations: 918)
+Completed 200 OK in 19ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 1474)
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2021-03-12 10:57:28 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"authenticity_token"=>"3+G5+nd7YnPXIaVGYc6ds6CGXvgcQ7lJjqo35uBWiSs3nxu117sNDM46Ohhn+Z3tDehgQSZkk/2l1kS+DWha8Q==", "usuario"=>{"login"=>"anamaria", "email"=>"ana@email.com", "senha"=>"123456"}, "commit"=>"salvar"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "anamaria"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "ana@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[36mUsuario Create (141.2ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "anamaria"], ["email", "ana@email.com"], ["senha", "123456"], ["created_at", "2021-03-12 13:57:28.323665"], ["updated_at", "2021-03-12 13:57:28.323665"]]
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+  [1m[35m (61.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/usuarios_controller.rb:30:in `block in create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 637ms (ActiveRecord: 204.6ms | Allocations: 7757)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:57:28 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.4ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1286)
+Completed 200 OK in 17ms (Views: 9.1ms | ActiveRecord: 1.3ms | Allocations: 3071)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-12 10:57:34 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 6.5ms | Allocations: 806)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 918)
+Completed 200 OK in 16ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 1478)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:57:37 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 775)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.5ms | Allocations: 1345)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-12 10:58:00 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 347)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 894)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-12 10:58:07 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"9CxznTcftEelR5pqt/Rxxh0xxYlOptUaEOhnTvnyPfpynZ4EArbnJ8GUEOk8yBAvkktlUmqSa46K8o1cc01X7A==", "email"=>"ana@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 991)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:58:07 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.1ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 777)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1486)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-12 10:58:22 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 138.4ms | Allocations: 3951)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 174.8ms | Allocations: 4327)
+Completed 500 Internal Server Error in 212ms (ActiveRecord: 1.6ms | Allocations: 9961)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:    
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3

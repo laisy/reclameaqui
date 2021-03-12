@@ -1,8 +1,8 @@
 class Usuario < ApplicationRecord
   has_many :reclamacaos
-  validates :login, presence: {message: 'login inválido!' } , uniqueness: true, length: {maximum: 10, message: 'deve conter no máximo 8 caracteres!' }
-  validates :senha, presence: {message: 'senha inválida!' }, length:{is: 6, message: ' deve conter 6 dígitos' }
-  validates :email, presence: {message: 'email inválido!' }, uniqueness: true
+  validates :login, presence: {message: 'login inválido!' } , uniqueness: true, length: {minimum:5}
+  validates :senha, presence: {message: 'senha inválida!' }, length:{minimum: 5}
+  validates :email, presence: {message: 'email inválido!' }, uniqueness: true, length:{minimum: 5}
 
   private
     @usuario_logado = nil
