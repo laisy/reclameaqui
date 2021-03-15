@@ -4474,3 +4474,271 @@ Processing by ReclamacaosController#create as HTML
 Completed 200 OK in 1379ms (Views: 23.4ms | ActiveRecord: 138.2ms | Allocations: 10754)
 
 
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:43:05 -0300
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"IqR4cALgiaM2mhexrqNKUGQuJDThQG6A46lS9rPtEne4znNATPvfanLHPmDgx5hkRECISlJPknNBqxLKKfVdwA==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Comprei um aparelho e veio quebrado", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (55.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 27.4ms | Allocations: 1551)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 30.0ms | Allocations: 1666)
+Completed 200 OK in 261ms (Views: 33.1ms | ActiveRecord: 56.5ms | Allocations: 15762)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:45:42 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"u78rEW8Ei6w94Ley9yV52zDWJ9K3qcfimdgemsoYEJEh1SAhIR/dZXm9nmO5QavvELiLrASmOxE72l6mUABfJg==", "reclamacao"=>{"titulo"=>"a", "texto"=>"Comprei um aparelho e veio quebrado", "cat_problema"=>"briquedos", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 14.2ms | Allocations: 1371)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 15.3ms | Allocations: 1483)
+Completed 200 OK in 66ms (Views: 16.9ms | ActiveRecord: 1.4ms | Allocations: 6881)
+
+
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:50:09 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (22.6ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 211.0ms | Allocations: 1843)
+Completed 200 OK in 371ms (Views: 258.1ms | ActiveRecord: 37.1ms | Allocations: 5082)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-15 10:50:14 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 56.7ms | Allocations: 683)
+Completed 200 OK in 92ms (Views: 90.1ms | ActiveRecord: 0.0ms | Allocations: 1801)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-15 10:50:21 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"kIlPzYlGpzSKotPmgWMPuX2vQmB9/90OJqOOg00khYPt/QY7PKVOqOWzWuU8RmgslU+r3UfNygwYWPMoNoO9WA==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (67.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 174ms (ActiveRecord: 70.7ms | Allocations: 5116)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-15 10:50:21 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.4ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 783)
+Completed 200 OK in 38ms (Views: 33.9ms | ActiveRecord: 0.4ms | Allocations: 1487)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-15 10:50:24 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 12.1ms | Allocations: 1148)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 1261)
+Completed 200 OK in 59ms (Views: 16.4ms | ActiveRecord: 1.1ms | Allocations: 6766)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:50:27 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"QjU7NXU6BO+DNAcKc9io31lENGxg/hkdIOmpp/llU3TYXzAFOyFSJsdpLts9vHrreSqYEtPx5e6C6+mbY30cww==", "reclamacao"=>{"titulo"=>"a", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 11.9ms | Allocations: 2047)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 13.0ms | Allocations: 2159)
+Completed 200 OK in 84ms (Views: 16.5ms | ActiveRecord: 1.2ms | Allocations: 9568)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:52:43 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"UNWLFSsHzir4ElgNf5wtCHh3Jf+CxA6U8EKqQ8UK+vvKv4AlZRyY47xPcdwx+P88WBmJgTHL8mdSQOp/XxK1TA==", "reclamacao"=>{"titulo"=>"a", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 0.0ms | Allocations: 1333)
+
+
+  
+SyntaxError (/home/laisyferreira/Documentos/BCC/2020.4/ES/reclameaqui/reclameaqui/app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting '}'
+...ório"},  length: {minimum: 3, , too_short: "%{count} caracte...
+...                               ^
+/home/laisyferreira/Documentos/BCC/2020.4/ES/reclameaqui/reclameaqui/app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting end
+...cteres é o minimo permitido ", maximum:20, too_long: "%{cou...
+...                              ^
+/home/laisyferreira/Documentos/BCC/2020.4/ES/reclameaqui/reclameaqui/app/models/reclamacao.rb:6: syntax error, unexpected '}', expecting end
+...eres é o máximo permitido " }, uniqueness: true
+...                              ^):
+  
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting '}'
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting end
+app/models/reclamacao.rb:6: syntax error, unexpected '}', expecting end
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting '}'
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting end
+app/models/reclamacao.rb:6: syntax error, unexpected '}', expecting end
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting '}'
+app/models/reclamacao.rb:6: syntax error, unexpected ',', expecting end
+app/models/reclamacao.rb:6: syntax error, unexpected '}', expecting end
+app/controllers/reclamacaos_controller.rb:31:in `create'
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:53:11 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1451)
+Completed 200 OK in 60ms (Views: 15.7ms | ActiveRecord: 2.4ms | Allocations: 4567)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-15 10:53:14 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 356)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 1056)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-15 10:53:16 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"GNCNTRHUxIrATtDg0PnoHj71S/irWDfaYU3kQY3nuF1lpMS7pDctFq9fWeNt3I+L1hWiRZFqINhftpnq9kCAhg==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (0.5ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 26ms (ActiveRecord: 3.0ms | Allocations: 5130)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-15 10:53:16 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.6ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 777)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.6ms | Allocations: 1476)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-15 10:53:19 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 2.4ms | Allocations: 1148)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1261)
+Completed 200 OK in 20ms (Views: 3.7ms | ActiveRecord: 0.6ms | Allocations: 6746)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:53:22 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"A6mkZXZIK5xwCxpb7eTu4bJFNg2znvzxJOmSShOxlLGZw69VOFN9VTRWM4qjgDzVkiuacwCRAAKG69J2ianbBg==", "reclamacao"=>{"titulo"=>"aa", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "aa"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 68.6ms | Allocations: 2048)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 69.7ms | Allocations: 2160)
+Completed 200 OK in 89ms (Views: 72.3ms | ActiveRecord: 0.7ms | Allocations: 9237)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:55:06 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"XXcjoAjRYhoVGQsCyWZAIv3siHMA8GqRQNd99bLY+nHHHSiQRso001FEItOHApIW3YIkDbP/lmLi1T3JKMC1xg==", "reclamacao"=>{"titulo"=>"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 15.6ms | Allocations: 2044)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 16.7ms | Allocations: 2156)
+Completed 200 OK in 134ms (Views: 30.0ms | ActiveRecord: 1.9ms | Allocations: 8581)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:55:19 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"AokK8yrGnC0ymaK3HmdQnEigUFZmrsxgLmODBaDRLgiY4wHDZN3K5HbEi2ZQA4KoaM78KNWhMJOMYcM5Oslhvw==", "reclamacao"=>{"titulo"=>"2", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "2"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 18.8ms | Allocations: 2044)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 19.3ms | Allocations: 2156)
+Completed 200 OK in 125ms (Views: 20.8ms | ActiveRecord: 2.0ms | Allocations: 8526)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:55:30 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"lA6YhfeFNs+Apxrp10361oqE9KhOIBgoSNZY47HMWfAOZJO1uZ5gBsT6MziZKSjiqupY1v0v5Nvq1BjfK9QWRw==", "reclamacao"=>{"titulo"=>"222222222", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "222222222"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 19.4ms | Allocations: 1915)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 21.3ms | Allocations: 2027)
+Completed 200 OK in 80ms (Views: 25.9ms | ActiveRecord: 2.2ms | Allocations: 8244)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:56:29 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"pIHmUon3ybfgdMZOQdTHtNvRJwCrnZPdCkfxFvhTDyA+6+1ix+yffqQp758PsBWA+7+LfhiSby6oRbEqYktAlw==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparelho veio quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 12.4ms | Allocations: 1237)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 14.2ms | Allocations: 1349)
+Completed 200 OK in 58ms (Views: 18.2ms | ActiveRecord: 2.2ms | Allocations: 6534)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-15 10:56:34 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"FASGDvPqPuucO9pNCTx/M9z6xwXvrfjd7NAoflkdILmObo0+vfFoIthm85xHWK0H/JRre1yiBC5O0mhCwwVvDg==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparelho veio quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 7.3ms | Allocations: 1237)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1349)
+Completed 200 OK in 43ms (Views: 12.1ms | ActiveRecord: 1.7ms | Allocations: 6538)
+
+
