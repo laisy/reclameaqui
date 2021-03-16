@@ -48,11 +48,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'cucumber', '3.1.2'
-  gem 'cucumber-rails', '2.0.0' , require: false
+  gem 'cucumber-rails', require: false
   gem 'rspec'
   gem 'database_cleaner'
 

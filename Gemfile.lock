@@ -89,12 +89,12 @@ GEM
       cucumber-tag_expressions (~> 1.1.0)
       gherkin (~> 5.0)
     cucumber-expressions (6.0.1)
-    cucumber-rails (2.0.0)
-      capybara (>= 2.12, < 4)
-      cucumber (>= 3.0.2, < 4)
-      mime-types (>= 2.0, < 4)
+    cucumber-rails (2.2.0)
+      capybara (>= 2.18, < 4)
+      cucumber (>= 3.0.2, < 6)
+      mime-types (~> 3.2)
       nokogiri (~> 1.8)
-      railties (>= 4.2, < 7)
+      rails (>= 5.0, < 7)
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     database_cleaner (2.0.1)
@@ -253,7 +253,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cucumber (= 3.1.2)
-  cucumber-rails (= 2.0.0)
+  cucumber-rails
   database_cleaner
   jbuilder (~> 2.7)
   listen (~> 3.2)
