@@ -23,13 +23,15 @@ class ReclamacaosController < ApplicationController
 
   # GET /reclamacaos/1/edit
   def edit
+    
   end
 
   # POST /reclamacaos
   # POST /reclamacaos.json
   def create
     @reclamacao = Reclamacao.new(reclamacao_params)
-
+    user = Usuario.get_usuario_logado
+    @reclamacao.write_attribute(:usuario_id, user.id)
     respond_to do |format|
       if @reclamacao.save
         format.html { redirect_to root_path, notice: 'RECLAMAÇÃO EFETUADA COM SUCESSO' }
@@ -44,6 +46,8 @@ class ReclamacaosController < ApplicationController
   # PATCH/PUT /reclamacaos/1
   # PATCH/PUT /reclamacaos/1.json
   def update
+    user = Usuario.get_usuario_logado
+    @reclamacao.write_attribute(usuario_id, user.id)
     respond_to do |format|
       if @reclamacao.update(reclamacao_params)
         format.html { redirect_to usuario_path(Usuario.get_usuario_logado), notice: 'RECLAMAÇÃO ATUALIZADA!' }
@@ -73,6 +77,6 @@ class ReclamacaosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reclamacao_params
-      params.require(:reclamacao).permit(:titulo, :texto, :cat_problema, :nome_empresa, :usuario_id)
+      params.require(:reclamacao).permit(:titulo, :texto, :cat_problema, :nome_empresa)
     end
 end

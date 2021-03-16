@@ -7702,3 +7702,360 @@ Processing by ReclamacaosController#index as HTML
 Completed 200 OK in 34ms (Views: 3.6ms | ActiveRecord: 29.3ms | Allocations: 1416)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:11:52 -0300
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 1952)
+Completed 200 OK in 112ms (Views: 22.1ms | ActiveRecord: 0.9ms | Allocations: 7193)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-16 16:11:55 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 733)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms | Allocations: 1793)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-16 16:12:04 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"owP3kQPaV92euGobY1O1sFLph7567tsnDG28fJZr4+DjBiZKundVLUgmwvU4AHpYmS+W8OmNr6EEjV+06j9ljg==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (16.3ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 45ms (ActiveRecord: 19.8ms | Allocations: 5428)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:12:04 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.2ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 784)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 1498)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:12:11 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 64.3ms | Allocations: 1871)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 68.9ms | Allocations: 2236)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.8ms | Allocations: 7858)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:13:47 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 75.0ms | Allocations: 5965)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 76.7ms | Allocations: 6346)
+Completed 200 OK in 83ms (Views: 81.1ms | ActiveRecord: 0.0ms | Allocations: 8050)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:22:45 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 7.4ms | Allocations: 1614)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2000)
+Completed 200 OK in 76ms (Views: 24.2ms | ActiveRecord: 0.0ms | Allocations: 11084)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:23:32 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 6.6ms | Allocations: 1152)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1423)
+Completed 200 OK in 33ms (Views: 13.1ms | ActiveRecord: 2.1ms | Allocations: 10104)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 16:23:42 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"XIiEGu+XZAkTfVWJUEd6PqEWaNAuRq6XjxSvEeMdMQPFoTuWkzAsY4UxlSL/ZAt+Apaai8DBguPPG9NNirurUw==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"aaaaaaaaaaaaaaa", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+Completed 500 Internal Server Error in 226ms (ActiveRecord: 0.0ms | Allocations: 47967)
+
+
+  
+NameError (undefined local variable or method `usuario_id' for #<ReclamacaosController:0x00007fdf6c408aa0>):
+  
+app/controllers/reclamacaos_controller.rb:34:in `create'
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 16:24:21 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (7.9ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 58.5ms | Allocations: 1837)
+Completed 200 OK in 69ms (Views: 54.0ms | ActiveRecord: 8.8ms | Allocations: 5012)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-16 16:24:24 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 26.7ms | Allocations: 678)
+Completed 200 OK in 33ms (Views: 30.9ms | ActiveRecord: 0.0ms | Allocations: 1787)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:24:26 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 9.1ms | Allocations: 1166)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 1282)
+Completed 200 OK in 32ms (Views: 11.0ms | ActiveRecord: 0.6ms | Allocations: 6675)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-16 16:24:27 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"gWMDjJVGUkKUZ1xlYdVfENlfv02cgggPssV/mVtRWpnBZtJXLOtQskL59Is6hpD4EpmuAw/hfIm6JZxRJwXc9w==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (24.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 55ms (ActiveRecord: 26.8ms | Allocations: 5037)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:24:27 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.4ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 778)
+Completed 200 OK in 22ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:24:29 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 9.7ms | Allocations: 1085)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 11.1ms | Allocations: 1197)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 0.0ms | Allocations: 1867)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 16:24:36 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"SdjMEtEagO+YWM3MhTd1dympZrGhn35bD2zLYQymYJ3Q8XOerb3IhQ4UDWcqFAQ3iimU6k8YUi9PY7c9ZQD6zQ==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"aaaaaaaaaaaaaaa", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 823)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute ``):
+  
+app/controllers/reclamacaos_controller.rb:34:in `create'
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 16:25:37 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.2ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1606)
+Completed 200 OK in 21ms (Views: 13.2ms | ActiveRecord: 0.7ms | Allocations: 4723)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-03-16 16:25:39 -0300
+Processing by LoginController#index as HTML
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 356)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 1054)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-03-16 16:25:42 -0300
+Processing by LoginController#create as HTML
+  Parameters: {"authenticity_token"=>"lo1Vywtr6ricdSsTDRx3aF2LPYd2R8MGNvk1JnJDbtnWiIQQssboSErrg/1WT7iAlk0syeUkt4A+GdbuDhfotw==", "email"=>"laisy@email.com", "senha"=>"123456", "commit"=>"entrar"}
+  [1m[36mUsuario Load (1.0ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios"[0m
+  ↳ app/controllers/login_controller.rb:24:in `login'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 28ms (ActiveRecord: 2.8ms | Allocations: 5111)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:25:42 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.1ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 777)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 1488)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 16:25:43 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 4.1ms | Allocations: 1148)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1261)
+Completed 200 OK in 23ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 6752)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 16:25:53 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"8JYYVUExKaglg4qtZ51PRUjqRT0UjjwrGGpNW0H+uD5pv6fZPZZhwrPPSgbIvj4F62q3ZvoJEF9YZTEHKFgibg==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"aaaaaaaaaaaaaaaaa", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+  [1m[36mUsuario Load (31.7ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+  [1m[36mReclamacao Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+  [1m[36mReclamacao Create (21.3ms)[0m  [1m[32mINSERT INTO "reclamacaos" ("titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["titulo", "Aparelho quebrado"], ["texto", "aaaaaaaaaaaaaaaaa"], ["cat_problema", "Eletrodomestico"], ["nome_empresa", "Empresa1"], ["usuario_id", 3], ["created_at", "2021-03-16 19:25:53.639272"], ["updated_at", "2021-03-16 19:25:53.639272"]]
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+  [1m[35m (61.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:36:in `block in create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 344ms (ActiveRecord: 115.1ms | Allocations: 11176)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:25:53 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.9ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/reclamacaos/index.html.erb:37
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1676)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.1ms | Allocations: 2364)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-16 16:29:48 -0300
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  [1m[36mUsuario Load (1.5ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/reclamacaos/index.html.erb:37
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 138.0ms | Allocations: 15759)
+Completed 200 OK in 162ms (Views: 140.4ms | ActiveRecord: 5.0ms | Allocations: 19630)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 16:29:58 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 180.8ms | Allocations: 3036)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 204.9ms | Allocations: 3437)
+Completed 200 OK in 211ms (Views: 209.8ms | ActiveRecord: 0.0ms | Allocations: 4639)
+
+

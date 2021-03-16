@@ -1,5 +1,5 @@
 Given ("eu estou logada no sistema") do 
-    visit "usuarios/new"
+    visit "/usuarios/new"
     fill_in 'user[login]', :with => "patricia"
     fill_in 'user[email]', :with => "patricia@email.com"
     fill_in 'user[senha]', :with => "123456"
