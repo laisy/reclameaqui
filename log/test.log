@@ -8487,3 +8487,89 @@ Migrating to CreateUsuarios (20210107011023)
   [1m[35m (194.4ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (65.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (27.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "reclamacaos"[0m
+  [1m[35m (219.4ms)[0m  [1m[35mCREATE TABLE "reclamacaos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "texto" text, "cat_problema" varchar, "nome_empresa" varchar, "usuario_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "usuarios"[0m
+  [1m[35m (184.7ms)[0m  [1m[35mCREATE TABLE "usuarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar, "email" varchar, "senha" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (239.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (210.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210107011023)[0m
+  [1m[35m (222.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210107010905);
+
+[0m
+  [1m[35m (394.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-03-16 14:45:44.695731"], ["updated_at", "2021-03-16 14:45:44.695731"]]
+  [1m[35m (343.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "226f1ccf0a159578e109e09ada7726a7e42163af"], ["created_at", "2021-03-16 14:45:45.141438"], ["updated_at", "2021-03-16 14:45:45.141438"]]
+  [1m[35m (193.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 11:45:48 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 307.2ms | Allocations: 2932)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 365.7ms | Allocations: 3444)
+Completed 200 OK in 794ms (Views: 517.5ms | ActiveRecord: 2.7ms | Allocations: 11584)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 11:45:49 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 3.6ms | Allocations: 752)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 848)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 1275)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 11:45:49 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 1.2ms | Allocations: 748)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 842)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 1268)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 11:45:49 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 1.8ms | Allocations: 748)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 842)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 1268)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 12:02:53 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 57.7ms | Allocations: 2932)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 82.1ms | Allocations: 3444)
+Completed 200 OK in 171ms (Views: 108.8ms | ActiveRecord: 3.8ms | Allocations: 11582)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 12:02:54 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 4.7ms | Allocations: 752)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 848)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 1275)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 12:02:54 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 1.5ms | Allocations: 748)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 842)
+Completed 200 OK in 13ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 1270)
+Started GET "/usuarios/new" for 127.0.0.1 at 2021-03-16 12:02:54 -0300
+Processing by UsuariosController#new as HTML
+  Rendering usuarios/new.html.erb within layouts/application
+  Rendered usuarios/_form.html.erb (Duration: 1.3ms | Allocations: 748)
+  Rendered usuarios/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 842)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1268)

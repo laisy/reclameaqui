@@ -4861,3 +4861,2669 @@ Processing by ReclamacaosController#new as HTML
 Completed 200 OK in 2394ms (Views: 931.9ms | ActiveRecord: 1.5ms | Allocations: 6762)
 
 
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-15 21:53:31 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 7.6ms | Allocations: 1085)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1197)
+Completed 200 OK in 59ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 1874)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 11:58:40 -0300
+  [1m[35m (42.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"AinJPOj0gIw5JWpntR6U4GchGiU5ytgMbxknIi0+PWKYQ8IMpu/WRX14Q7b7ekbUR0+2W4rFJP/NG2cetyZy1Q==", "reclamacao"=>{"titulo"=>"Aparelho com defeito", "texto"=>"Aparelho comprado veio com defeito", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa2"}, "commit"=>"salvar"}
+  [1m[35m (29.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (39.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho com defeito"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa2"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 176.7ms | Allocations: 1489)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 728.6ms | Allocations: 1846)
+Completed 500 Internal Server Error in 4959ms (ActiveRecord: 69.2ms | Allocations: 8297)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+app/controllers/reclamacaos_controller.rb:38:in `block (2 levels) in create'
+app/controllers/reclamacaos_controller.rb:33:in `create'
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:03:34 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (7.3ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 702.3ms | Allocations: 1187)
+Completed 200 OK in 1016ms (Views: 887.6ms | ActiveRecord: 7.3ms | Allocations: 2878)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:03:40 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 26.6ms | Allocations: 1547)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 46.5ms | Allocations: 1904)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.0ms | Allocations: 2520)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:    
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:03:53 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 869.2ms | Allocations: 1607)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 896.5ms | Allocations: 8983)
+Completed 500 Internal Server Error in 1254ms (ActiveRecord: 0.0ms | Allocations: 77637)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:    
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:15:17 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 194.0ms | Allocations: 1857)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 235.0ms | Allocations: 2238)
+Completed 200 OK in 318ms (Views: 262.3ms | ActiveRecord: 0.0ms | Allocations: 3927)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:16:25 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"StzleeRgAItF4FiFKUrjdFDFgwB5ZCYZPU5HHUO8Vx/Qtu5JqntWQgG9cVRnLjFAcKsvfspr2uqfTAch2aQYqA==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparelho quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1", "usuario_id"=>"true"}, "commit"=>"salvar"}
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mUsuario Load (23.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 8.2ms | Allocations: 1473)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 9.0ms | Allocations: 1587)
+Completed 200 OK in 2389ms (Views: 11.1ms | ActiveRecord: 24.8ms | Allocations: 10645)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:17:48 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"+WLgAkaSGUgngHySTKkvXZYp4qlmKsNG8dw/JYKAp3tjCOsyCIlPgWPdVUMCzf1ptkdO19UlP7VT3n8ZGJjozA==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparelho quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1", "usuario_id"=>"true"}, "commit"=>"salvar"}
+  [1m[35m (67.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 2.4ms | Allocations: 1489)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1842)
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 68.2ms | Allocations: 8651)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+app/controllers/reclamacaos_controller.rb:38:in `block (2 levels) in create'
+app/controllers/reclamacaos_controller.rb:33:in `create'
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:34:28 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"+WLgAkaSGUgngHySTKkvXZYp4qlmKsNG8dw/JYKAp3tjCOsyCIlPgWPdVUMCzf1ptkdO19UlP7VT3n8ZGJjozA==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparelho quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1", "usuario_id"=>"true"}, "commit"=>"salvar"}
+  [1m[35m (63.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mUsuario Load (97.0ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (22.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1840.6ms | Allocations: 1482)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 1841.4ms | Allocations: 1569)
+Completed 500 Internal Server Error in 4208ms (ActiveRecord: 183.6ms | Allocations: 7674)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+app/controllers/reclamacaos_controller.rb:38:in `block (2 levels) in create'
+app/controllers/reclamacaos_controller.rb:33:in `create'
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:41:00 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (16.5ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 69.7ms | Allocations: 1189)
+Completed 200 OK in 146ms (Views: 109.1ms | ActiveRecord: 16.5ms | Allocations: 2872)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:41:03 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 69.4ms | Allocations: 1555)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 139.6ms | Allocations: 1909)
+Completed 500 Internal Server Error in 142ms (ActiveRecord: 0.0ms | Allocations: 2515)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:41:45 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.0ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1919)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 3127)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:42:30 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 151.9ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 153.2ms | Allocations: 1919)
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 0.0ms | Allocations: 3127)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[@u.login,@u.id]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[@u.login,@u.id]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:42:51 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 2.9ms | Allocations: 1552)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1639)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2109)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[@u.login,@u.id]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[@u.login,@u.id]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:43:22 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.7ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 66.1ms | Allocations: 1919)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 0.0ms | Allocations: 3127)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login],[@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login],[@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:43:46 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 29.4ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 32.8ms | Allocations: 1919)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms | Allocations: 3127)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:44:02 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 5.9ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1919)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms | Allocations: 3127)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:44:41 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 4.5ms | Allocations: 1856)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2237)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 3916)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:44:47 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"i+07LVVqCbk3aivcCqSQFtL/nwsn4xKCIJ3wedpEyZMRhzAdG3FfcHM3Ag1EwEIi8pEzdZTs7nGCn7BFQFyGJA==", "reclamacao"=>{"titulo"=>"", "texto"=>"", "cat_problema"=>"", "nome_empresa"=>"Empresa1", "usuario_id"=>"true"}, "commit"=>"salvar"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mUsuario Load (113.8ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", ""], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 62.5ms | Allocations: 2531)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 63.2ms | Allocations: 2645)
+Completed 200 OK in 301ms (Views: 66.7ms | ActiveRecord: 114.9ms | Allocations: 10631)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:45:03 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"dvR9mWhf8b8uRvFzRfEKryfQxAJEqW2He32juMuxcCPsnnapJkSndmob2KILldibB75ofPemkXTZf+OEUak/lA==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"Aparalho quebrado", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1", "usuario_id"=>"true"}, "commit"=>"salvar"}
+  [1m[35m (47.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 16.1ms | Allocations: 1468)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 16.7ms | Allocations: 1580)
+Completed 200 OK in 107ms (Views: 17.8ms | ActiveRecord: 48.3ms | Allocations: 7853)
+
+
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:47:32 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.1ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1170)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.1ms | Allocations: 2852)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:47:35 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 13.0ms | Allocations: 1823)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 18.6ms | Allocations: 2204)
+Completed 200 OK in 29ms (Views: 23.1ms | ActiveRecord: 0.0ms | Allocations: 3022)
+
+
+Started POST "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:47:43 -0300
+Processing by ReclamacaosController#create as HTML
+  Parameters: {"authenticity_token"=>"m6nCvLKjGN11roOTyVfdHcFJQ/mh3BKn0kdsvhVDLJIBw8mM/LhOFDHzqkKHMw8p4SfvhxLT7lRwRSyCj1tjJQ==", "reclamacao"=>{"titulo"=>"Aparelho quebrado", "texto"=>"aaaaaaaaaaa", "cat_problema"=>"Eletrodomestico", "nome_empresa"=>"Empresa1"}, "commit"=>"salvar"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "Aparelho quebrado"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[36mReclamacao Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."nome_empresa" = ? LIMIT ?[0m  [["nome_empresa", "Empresa1"], ["LIMIT", 1]]
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reclamacaos_controller.rb:34:in `block in create'
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 13.2ms | Allocations: 1435)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 14.8ms | Allocations: 1547)
+Completed 200 OK in 60ms (Views: 19.3ms | ActiveRecord: 2.2ms | Allocations: 6731)
+
+
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:48:06 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.7ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1165)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.7ms | Allocations: 2847)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:48:08 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 7.1ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 13.9ms | Allocations: 1918)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 2521)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:48:37 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.0ms | Allocations: 1562)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 55.4ms | Allocations: 1916)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.0ms | Allocations: 3122)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for([@u.login,@u.id]])) {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for([@u.login,@u.id]])) {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:46: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting ')'
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos" for 127.0.0.1 at 2021-03-16 12:49:34 -0300
+Processing by ReclamacaosController#index as HTML
+  Rendering reclamacaos/index.html.erb within layouts/application
+  [1m[36mReclamacao Load (0.1ms)[0m  [1m[34mSELECT "reclamacaos".* FROM "reclamacaos"[0m
+  ↳ app/views/reclamacaos/index.html.erb:31
+  Rendered reclamacaos/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1164)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 2151)
+
+
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:49:40 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.3ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1919)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3125)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for([@u.login,@u.id])), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for([@u.login,@u.id])), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:50:14 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.2ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1919)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3125)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]), {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:50:45 -0300
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 1.4ms | Allocations: 1565)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1919)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 3125)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <%= @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select[for[[@u.login,@u.id]]], {include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <%= @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select[for[[@u.login,@u.id]]], {include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ']', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 12:58:51 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 80.8ms | Allocations: 1524)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 109.4ms | Allocations: 1878)
+Completed 500 Internal Server Error in 377ms (ActiveRecord: 0.0ms | Allocations: 9437)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
+Started GET "/reclamacaos/new" for 127.0.0.1 at 2021-03-16 13:02:49 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ReclamacaosController#new as HTML
+  Rendering reclamacaos/new.html.erb within layouts/application
+  Rendered reclamacaos/_form.html.erb (Duration: 64.5ms | Allocations: 1516)
+  Rendered reclamacaos/new.html.erb within layouts/application (Duration: 65.5ms | Allocations: 1604)
+Completed 500 Internal Server Error in 503ms (ActiveRecord: 3.2ms | Allocations: 9143)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<div class="formulario-tabela">
+  <%= form_with(model: reclamacao, local: true) do |form| %>
+    <% if reclamacao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+
+        <ul>
+          <% reclamacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :texto %>
+      <%= form.text_area :texto, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'categoria do problema' %>
+      <%= form.text_field :cat_problema, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label 'nome da empresa' %>
+      <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "usuario" %>
+      <% @u = Usuario.get_usuario_logado %>
+      <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit 'salvar' %>
+    </div>
+  <% end %>
+</div>
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <div class="formulario-tabela">
+4:      <%= form_with(model: reclamacao, local: true) do |form| %>
+5:        <% if reclamacao.errors.any? %>
+6:          <div id="error_explanation">
+7:            <h2><%= pluralize(reclamacao.errors.count, "error") %> proibiu este reclamação de ser salvo:</h2>
+8:    
+9:            <ul>
+10:              <% reclamacao.errors.full_messages.each do |message| %>
+11:                <li><%= message %></li>
+12:              <% end %>
+13:            </ul>
+14:          </div>
+15:        <% end %>
+16:    
+17:        <div class="form-group">
+18:          <%= form.label :titulo %>
+19:          <%= form.text_field :titulo, :class => "form-control" %>
+20:        </div>
+21:    
+22:        <div class="form-group">
+23:          <%= form.label :texto %>
+24:          <%= form.text_area :texto, :class => "form-control" %>
+25:        </div>
+26:    
+27:        <div class="form-group">
+28:          <%= form.label 'categoria do problema' %>
+29:          <%= form.text_field :cat_problema, :class => "form-control" %>
+30:        </div>
+31:    
+32:        <div class="form-group">
+33:          <%= form.label 'nome da empresa' %>
+34:          <%= select('reclamacao', :nome_empresa, ['Empresa1','Empresa2','Empresa3'],{include: true}, :class => "form-control") %>
+35:        </div>
+36:    
+37:        <div class="form-group">
+38:          <%= form.label "usuario" %>
+39:          <% @u = Usuario.get_usuario_logado %>
+40:          <%= select('reclamacao', :usuario_id, options_for_select(for[[@u.login,@u.id]]),{include: true}, :class => "form-control") %>
+41:        </div>
+42:        
+43:        <div class="form-group">
+44:          <%= form.submit 'salvar' %>
+45:        </div>
+46:      <% end %>
+47:    </div>
+  
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ',', expecting ')'
+app/views/reclamacaos/_form.html.erb:40: syntax error, unexpected ')', expecting end
+app/views/reclamacaos/_form.html.erb:49: syntax error, unexpected end, expecting end-of-input
+app/views/reclamacaos/new.html.erb:3
