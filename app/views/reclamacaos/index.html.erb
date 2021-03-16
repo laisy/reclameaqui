@@ -36,7 +36,7 @@
           <td><%= reclamacao.nome_empresa %></td>
           <td><%= reclamacao.usuario.login %></td>
           <td><%= link_to 'Show', reclamacao %></td>
-          <td><%= link_to 'Edit', edit_reclamacao_path(reclamacao) %></td>
+          <td><%= link_to 'Editar', edit_reclamacao_path(reclamacao), id:"e-#{reclamacao.titulo}" %></td>
           <td><%= link_to 'Destroy', reclamacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

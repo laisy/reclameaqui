@@ -46,8 +46,6 @@ class ReclamacaosController < ApplicationController
   # PATCH/PUT /reclamacaos/1
   # PATCH/PUT /reclamacaos/1.json
   def update
-    user = Usuario.get_usuario_logado
-    @reclamacao.write_attribute(usuario_id, user.id)
     respond_to do |format|
       if @reclamacao.update(reclamacao_params)
         format.html { redirect_to usuario_path(Usuario.get_usuario_logado), notice: 'RECLAMAÇÃO ATUALIZADA!' }
