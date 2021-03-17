@@ -10,5 +10,8 @@ class UsuarioTest < ActiveSupport::TestCase
     usuario.save
     assert usuario.update login:'joaooo', email: 'joao@email.com', senha:'123456'
    end
-  
+   test "criando usuario sem login" do
+    usuario = Usuario.new login:'', email: 'joao@email.com', senha:'123456'
+    assert_not usuario.save
+   end
 end
