@@ -16407,3 +16407,165 @@ UsuarioTest: test_criando_usuario_sem_login
   [1m[36mUsuario Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
   [1m[35m (0.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (314.9ms)[0m  [1m[31mDELETE FROM "reclamacaos";
+DELETE FROM "usuarios"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "usuarios";
+DELETE FROM "reclamacaos";
+INSERT INTO "usuarios" ("id", "login", "email", "senha", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2021-03-17 00:28:51.883320', '2021-03-17 00:28:51.883320');
+INSERT INTO "usuarios" ("id", "login", "email", "senha", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2021-03-17 00:28:51.883320', '2021-03-17 00:28:51.883320');
+INSERT INTO "reclamacaos" ("id", "titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 'MyString', 1, '2021-03-17 00:28:51.886457', '2021-03-17 00:28:51.886457');
+INSERT INTO "reclamacaos" ("id", "titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 'MyString', 1, '2021-03-17 00:28:51.886457', '2021-03-17 00:28:51.886457')[0m
+  [1m[36mTruncate Tables (359.2ms)[0m  [1m[31mDELETE FROM "reclamacaos";
+DELETE FROM "usuarios"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.3ms)[0m  [1m[31mDELETE FROM "usuarios";
+DELETE FROM "reclamacaos";
+INSERT INTO "usuarios" ("id", "login", "email", "senha", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2021-03-17 00:28:51.927578', '2021-03-17 00:28:51.927578');
+INSERT INTO "usuarios" ("id", "login", "email", "senha", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2021-03-17 00:28:51.927578', '2021-03-17 00:28:51.927578');
+INSERT INTO "reclamacaos" ("id", "titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 'MyString', 1, '2021-03-17 00:28:51.933018', '2021-03-17 00:28:51.933018');
+INSERT INTO "reclamacaos" ("id", "titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 'MyString', 1, '2021-03-17 00:28:51.933018', '2021-03-17 00:28:51.933018')[0m
+  [1m[35m (167.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------
+UsuarioTest: test_criando_usuario
+---------------------------------
+  [1m[35m (159.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+UsuarioTest: test_criando_usuario_sem_login
+-------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.9ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.108527"], ["updated_at", "2021-03-17 00:28:52.108527"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+UsuarioTest: test_editando_usuario_com_login_muito_pequeno
+----------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (5.8ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.6ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.137384"], ["updated_at", "2021-03-17 00:28:52.137384"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? AND "usuarios"."id" != ? LIMIT ?[0m  [["login", "joao"], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? AND "usuarios"."id" != ? LIMIT ?[0m  [["email", "joao@email.com"], ["id", 980190963], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+UsuarioTest: test_editando_usuario
+----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", ""], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.4ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.160005"], ["updated_at", "2021-03-17 00:28:52.160005"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? AND "usuarios"."id" != ? LIMIT ?[0m  [["login", "joaooo"], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? AND "usuarios"."id" != ? LIMIT ?[0m  [["email", "joao@email.com"], ["id", 980190963], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUsuario Update (0.4ms)[0m  [1m[33mUPDATE "usuarios" SET "login" = ?, "updated_at" = ? WHERE "usuarios"."id" = ?[0m  [["login", "joaooo"], ["updated_at", "2021-03-17 00:28:52.164966"], ["id", 980190963]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------------
+ReclamacaoTest: test_editando_reclamacao_com_titulo_muito_grande
+----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------
+ReclamacaoTest: test_criando_reclamacao
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.3ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.175957"], ["updated_at", "2021-03-17 00:28:52.175957"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.4ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.178453"], ["updated_at", "2021-03-17 00:28:52.178453"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "PC defeituoso e sem pegar"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Load (0.2ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------
+ReclamacaoTest: test_criando_reclamacao_sem_texto
+-------------------------------------------------
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "PC quebrado"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[36mReclamacao Create (0.3ms)[0m  [1m[32mINSERT INTO "reclamacaos" ("titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["titulo", "PC quebrado"], ["texto", "PC comprado defeituoso"], ["cat_problema", "Informatica"], ["nome_empresa", "Empresa1"], ["usuario_id", 980190963], ["created_at", "2021-03-17 00:28:52.208559"], ["updated_at", "2021-03-17 00:28:52.208559"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUsuario Create (0.4ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.210825"], ["updated_at", "2021-03-17 00:28:52.210825"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ReclamacaoTest: test_editando_reclamacao
+----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Load (0.1ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."login" = ? LIMIT ?[0m  [["login", "joaoo"], ["LIMIT", 1]]
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "PC quebrado"], ["LIMIT", 1]]
+  [1m[36mUsuario Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "usuarios" WHERE "usuarios"."email" = ? LIMIT ?[0m  [["email", "joao@email.com"], ["LIMIT", 1]]
+  [1m[36mUsuario Create (0.7ms)[0m  [1m[32mINSERT INTO "usuarios" ("login", "email", "senha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["login", "joaoo"], ["email", "joao@email.com"], ["senha", "123456"], ["created_at", "2021-03-17 00:28:52.215787"], ["updated_at", "2021-03-17 00:28:52.215787"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUsuario Load (0.1ms)[0m  [1m[34mSELECT "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT ?[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[36mReclamacao Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reclamacaos" WHERE "reclamacaos"."titulo" = ? LIMIT ?[0m  [["titulo", "PC defeituoso"], ["LIMIT", 1]]
+  [1m[36mReclamacao Create (0.3ms)[0m  [1m[32mINSERT INTO "reclamacaos" ("titulo", "texto", "cat_problema", "nome_empresa", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["titulo", "PC defeituoso"], ["texto", "PC comprado defeituoso"], ["cat_problema", "Informatica"], ["nome_empresa", "Empresa1"], ["usuario_id", 980190963], ["created_at", "2021-03-17 00:28:52.220926"], ["updated_at", "2021-03-17 00:28:52.220926"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
