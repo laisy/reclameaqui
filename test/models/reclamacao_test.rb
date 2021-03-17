@@ -7,5 +7,11 @@ class ReclamacaoTest < ActiveSupport::TestCase
     reclamacao = Reclamacao.new titulo:'PC quebrado', texto:'PC comprado defeituoso', cat_problema:'Informatica', nome_empresa:'Empresa1', usuario_id: usuario.id
     assert reclamacao.save
   end
+  test "editando reclamacao" do
+    usuario = Usuario.new login:'joaoo', email: 'joao@email.com', senha:'123456'
+    usuario.save
+    reclamacao = Reclamacao.new titulo:'PC quebrado', texto:'PC comprado defeituoso', cat_problema:'Informatica', nome_empresa:'Empresa1', usuario_id: usuario.id
+    assert reclamacao.update titulo:'PC defeituoso', texto:'PC comprado defeituoso', cat_problema:'Informatica', nome_empresa:'Empresa1', usuario_id: usuario.id
+  end
   
 end
